@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 id="winner">Cargando...</h2>
+
+<script type="module">
+import { db, collection, getDocs } from "./firebase.js";
+
+const snap = await getDocs(collection(db, "winners"));
+if (!snap.empty) {
+  document.getElementById("winner").innerText =
+    snap.docs[0].data().name;
+}
+</script>
+
+</body>
+</html>
